@@ -198,7 +198,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
     {
-        queue = [[ASQueue alloc] initWithName:"org.telegram.documentDownloadPreviewGeneration"];
+        queue = [[ASQueue alloc] initWithName:"org.eVITA.documentDownloadPreviewGeneration"];
     });
     
     return queue;

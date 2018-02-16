@@ -17,35 +17,35 @@ static SSignal *statsSignal(MTNetworkUsageCalculationInfo *baseInfo) {
     return [[SSignal alloc] initWithGenerator:^id<SDisposable>(SSubscriber *subscriber) {
         MTNetworkUsageManager *manager = [[MTNetworkUsageManager alloc] initWithInfo:baseInfo];
         id<MTDisposable> disposable = [[manager currentStatsForKeys:@[
-            @(TGTelegramNetworkUsageKeyDataIncomingWWAN),
-            @(TGTelegramNetworkUsageKeyDataOutgoingWWAN),
-            @(TGTelegramNetworkUsageKeyMediaGenericIncomingWWAN),
-            @(TGTelegramNetworkUsageKeyMediaGenericOutgoingWWAN),
-            @(TGTelegramNetworkUsageKeyMediaImageIncomingWWAN),
-            @(TGTelegramNetworkUsageKeyMediaImageOutgoingWWAN),
-            @(TGTelegramNetworkUsageKeyMediaVideoIncomingWWAN),
-            @(TGTelegramNetworkUsageKeyMediaVideoOutgoingWWAN),
-            @(TGTelegramNetworkUsageKeyMediaAudioIncomingWWAN),
-            @(TGTelegramNetworkUsageKeyMediaAudioOutgoingWWAN),
-            @(TGTelegramNetworkUsageKeyMediaDocumentIncomingWWAN),
-            @(TGTelegramNetworkUsageKeyMediaDocumentOutgoingWWAN),
-            @(TGTelegramNetworkUsageKeyCallIncomingWWAN),
-            @(TGTelegramNetworkUsageKeyCallOutgoingWWAN),
+            @(TGeVITANetworkUsageKeyDataIncomingWWAN),
+            @(TGeVITANetworkUsageKeyDataOutgoingWWAN),
+            @(TGeVITANetworkUsageKeyMediaGenericIncomingWWAN),
+            @(TGeVITANetworkUsageKeyMediaGenericOutgoingWWAN),
+            @(TGeVITANetworkUsageKeyMediaImageIncomingWWAN),
+            @(TGeVITANetworkUsageKeyMediaImageOutgoingWWAN),
+            @(TGeVITANetworkUsageKeyMediaVideoIncomingWWAN),
+            @(TGeVITANetworkUsageKeyMediaVideoOutgoingWWAN),
+            @(TGeVITANetworkUsageKeyMediaAudioIncomingWWAN),
+            @(TGeVITANetworkUsageKeyMediaAudioOutgoingWWAN),
+            @(TGeVITANetworkUsageKeyMediaDocumentIncomingWWAN),
+            @(TGeVITANetworkUsageKeyMediaDocumentOutgoingWWAN),
+            @(TGeVITANetworkUsageKeyCallIncomingWWAN),
+            @(TGeVITANetworkUsageKeyCallOutgoingWWAN),
             
-            @(TGTelegramNetworkUsageKeyDataIncomingOther),
-            @(TGTelegramNetworkUsageKeyDataOutgoingOther),
-            @(TGTelegramNetworkUsageKeyMediaGenericIncomingOther),
-            @(TGTelegramNetworkUsageKeyMediaGenericOutgoingOther),
-            @(TGTelegramNetworkUsageKeyMediaImageIncomingOther),
-            @(TGTelegramNetworkUsageKeyMediaImageOutgoingOther),
-            @(TGTelegramNetworkUsageKeyMediaVideoIncomingOther),
-            @(TGTelegramNetworkUsageKeyMediaVideoOutgoingOther),
-            @(TGTelegramNetworkUsageKeyMediaAudioIncomingOther),
-            @(TGTelegramNetworkUsageKeyMediaAudioOutgoingOther),
-            @(TGTelegramNetworkUsageKeyMediaDocumentIncomingOther),
-            @(TGTelegramNetworkUsageKeyMediaDocumentOutgoingOther),
-            @(TGTelegramNetworkUsageKeyCallIncomingOther),
-            @(TGTelegramNetworkUsageKeyCallOutgoingOther)
+            @(TGeVITANetworkUsageKeyDataIncomingOther),
+            @(TGeVITANetworkUsageKeyDataOutgoingOther),
+            @(TGeVITANetworkUsageKeyMediaGenericIncomingOther),
+            @(TGeVITANetworkUsageKeyMediaGenericOutgoingOther),
+            @(TGeVITANetworkUsageKeyMediaImageIncomingOther),
+            @(TGeVITANetworkUsageKeyMediaImageOutgoingOther),
+            @(TGeVITANetworkUsageKeyMediaVideoIncomingOther),
+            @(TGeVITANetworkUsageKeyMediaVideoOutgoingOther),
+            @(TGeVITANetworkUsageKeyMediaAudioIncomingOther),
+            @(TGeVITANetworkUsageKeyMediaAudioOutgoingOther),
+            @(TGeVITANetworkUsageKeyMediaDocumentIncomingOther),
+            @(TGeVITANetworkUsageKeyMediaDocumentOutgoingOther),
+            @(TGeVITANetworkUsageKeyCallIncomingOther),
+            @(TGeVITANetworkUsageKeyCallOutgoingOther)
         ]] startWithNext:^(id next) {
             if (next == nil) {
                 [subscriber putNext:@{}];
@@ -289,40 +289,40 @@ static SSignal *statsSignal(MTNetworkUsageCalculationInfo *baseInfo) {
     [_statsDisposable setDisposable:[[[[statsSignal([[TGTelegramNetworking instance] dataUsageInfo]) then:[[SSignal complete] delay:1.0 onQueue:[SQueue concurrentDefaultQueue]]] restart] deliverOn:[SQueue mainQueue]] startWithNext:^(NSDictionary *dict) {
         __strong TGNetworkUsageController *strongSelf = weakSelf;
         if (strongSelf != nil) {
-            int64_t dataIncomingWWAN = [dict[@(TGTelegramNetworkUsageKeyDataIncomingWWAN)] longLongValue];
-            int64_t dataOutgoingWWAN = [dict[@(TGTelegramNetworkUsageKeyDataOutgoingWWAN)] longLongValue];
-            int64_t dataIncomingOther = [dict[@(TGTelegramNetworkUsageKeyDataIncomingOther)] longLongValue];
-            int64_t dataOutgoingOther = [dict[@(TGTelegramNetworkUsageKeyDataOutgoingOther)] longLongValue];
+            int64_t dataIncomingWWAN = [dict[@(TGeVITANetworkUsageKeyDataIncomingWWAN)] longLongValue];
+            int64_t dataOutgoingWWAN = [dict[@(TGeVITANetworkUsageKeyDataOutgoingWWAN)] longLongValue];
+            int64_t dataIncomingOther = [dict[@(TGeVITANetworkUsageKeyDataIncomingOther)] longLongValue];
+            int64_t dataOutgoingOther = [dict[@(TGeVITANetworkUsageKeyDataOutgoingOther)] longLongValue];
             
-            int64_t mediaGenericIncomingWWAN = [dict[@(TGTelegramNetworkUsageKeyMediaGenericIncomingWWAN)] longLongValue];
-            int64_t mediaGenericOutgoingWWAN = [dict[@(TGTelegramNetworkUsageKeyMediaGenericOutgoingWWAN)] longLongValue];
-            int64_t mediaGenericIncomingOther = [dict[@(TGTelegramNetworkUsageKeyMediaGenericIncomingOther)] longLongValue];
-            int64_t mediaGenericOutgoingOther = [dict[@(TGTelegramNetworkUsageKeyMediaGenericOutgoingOther)] longLongValue];
+            int64_t mediaGenericIncomingWWAN = [dict[@(TGeVITANetworkUsageKeyMediaGenericIncomingWWAN)] longLongValue];
+            int64_t mediaGenericOutgoingWWAN = [dict[@(TGeVITANetworkUsageKeyMediaGenericOutgoingWWAN)] longLongValue];
+            int64_t mediaGenericIncomingOther = [dict[@(TGeVITANetworkUsageKeyMediaGenericIncomingOther)] longLongValue];
+            int64_t mediaGenericOutgoingOther = [dict[@(TGeVITANetworkUsageKeyMediaGenericOutgoingOther)] longLongValue];
             
-            int64_t mediaImageIncomingWWAN = [dict[@(TGTelegramNetworkUsageKeyMediaDocumentIncomingWWAN)] longLongValue];
-            int64_t mediaImageOutgoingWWAN = [dict[@(TGTelegramNetworkUsageKeyMediaImageOutgoingWWAN)] longLongValue];
-            int64_t mediaImageIncomingOther = [dict[@(TGTelegramNetworkUsageKeyMediaImageIncomingOther)] longLongValue];
-            int64_t mediaImageOutgoingOther = [dict[@(TGTelegramNetworkUsageKeyMediaImageOutgoingOther)] longLongValue];
+            int64_t mediaImageIncomingWWAN = [dict[@(TGeVITANetworkUsageKeyMediaDocumentIncomingWWAN)] longLongValue];
+            int64_t mediaImageOutgoingWWAN = [dict[@(TGeVITANetworkUsageKeyMediaImageOutgoingWWAN)] longLongValue];
+            int64_t mediaImageIncomingOther = [dict[@(TGeVITANetworkUsageKeyMediaImageIncomingOther)] longLongValue];
+            int64_t mediaImageOutgoingOther = [dict[@(TGeVITANetworkUsageKeyMediaImageOutgoingOther)] longLongValue];
             
-            int64_t mediaVideoIncomingWWAN = [dict[@(TGTelegramNetworkUsageKeyMediaVideoIncomingWWAN)] longLongValue];
-            int64_t mediaVideoOutgoingWWAN = [dict[@(TGTelegramNetworkUsageKeyMediaVideoOutgoingWWAN)] longLongValue];
-            int64_t mediaVideoIncomingOther = [dict[@(TGTelegramNetworkUsageKeyMediaVideoIncomingOther)] longLongValue];
-            int64_t mediaVideoOutgoingOther = [dict[@(TGTelegramNetworkUsageKeyMediaVideoOutgoingOther)] longLongValue];
+            int64_t mediaVideoIncomingWWAN = [dict[@(TGeVITANetworkUsageKeyMediaVideoIncomingWWAN)] longLongValue];
+            int64_t mediaVideoOutgoingWWAN = [dict[@(TGeVITANetworkUsageKeyMediaVideoOutgoingWWAN)] longLongValue];
+            int64_t mediaVideoIncomingOther = [dict[@(TGeVITANetworkUsageKeyMediaVideoIncomingOther)] longLongValue];
+            int64_t mediaVideoOutgoingOther = [dict[@(TGeVITANetworkUsageKeyMediaVideoOutgoingOther)] longLongValue];
             
-            int64_t mediaAudioIncomingWWAN = [dict[@(TGTelegramNetworkUsageKeyMediaAudioIncomingWWAN)] longLongValue];
-            int64_t mediaAudioOutgoingWWAN = [dict[@(TGTelegramNetworkUsageKeyMediaAudioOutgoingWWAN)] longLongValue];
-            int64_t mediaAudioIncomingOther = [dict[@(TGTelegramNetworkUsageKeyMediaAudioIncomingOther)] longLongValue];
-            int64_t mediaAudioOutgoingOther = [dict[@(TGTelegramNetworkUsageKeyMediaAudioOutgoingOther)] longLongValue];
+            int64_t mediaAudioIncomingWWAN = [dict[@(TGeVITANetworkUsageKeyMediaAudioIncomingWWAN)] longLongValue];
+            int64_t mediaAudioOutgoingWWAN = [dict[@(TGeVITANetworkUsageKeyMediaAudioOutgoingWWAN)] longLongValue];
+            int64_t mediaAudioIncomingOther = [dict[@(TGeVITANetworkUsageKeyMediaAudioIncomingOther)] longLongValue];
+            int64_t mediaAudioOutgoingOther = [dict[@(TGeVITANetworkUsageKeyMediaAudioOutgoingOther)] longLongValue];
             
-            int64_t mediaDocumentIncomingWWAN = [dict[@(TGTelegramNetworkUsageKeyMediaDocumentIncomingWWAN)] longLongValue];
-            int64_t mediaDocumentOutgoingWWAN = [dict[@(TGTelegramNetworkUsageKeyMediaDocumentOutgoingWWAN)] longLongValue];
-            int64_t mediaDocumentIncomingOther = [dict[@(TGTelegramNetworkUsageKeyMediaDocumentIncomingOther)] longLongValue];
-            int64_t mediaDocumentOutgoingOther = [dict[@(TGTelegramNetworkUsageKeyMediaDocumentOutgoingOther)] longLongValue];
+            int64_t mediaDocumentIncomingWWAN = [dict[@(TGeVITANetworkUsageKeyMediaDocumentIncomingWWAN)] longLongValue];
+            int64_t mediaDocumentOutgoingWWAN = [dict[@(TGeVITANetworkUsageKeyMediaDocumentOutgoingWWAN)] longLongValue];
+            int64_t mediaDocumentIncomingOther = [dict[@(TGeVITANetworkUsageKeyMediaDocumentIncomingOther)] longLongValue];
+            int64_t mediaDocumentOutgoingOther = [dict[@(TGeVITANetworkUsageKeyMediaDocumentOutgoingOther)] longLongValue];
             
-            int64_t callIncomingWWAN = [dict[@(TGTelegramNetworkUsageKeyCallIncomingWWAN)] longLongValue];
-            int64_t callOutgoingWWAN = [dict[@(TGTelegramNetworkUsageKeyCallOutgoingWWAN)] longLongValue];
-            int64_t callIncomingOther = [dict[@(TGTelegramNetworkUsageKeyCallIncomingOther)] longLongValue];
-            int64_t callOutgoingOther = [dict[@(TGTelegramNetworkUsageKeyCallOutgoingOther)] longLongValue];
+            int64_t callIncomingWWAN = [dict[@(TGeVITANetworkUsageKeyCallIncomingWWAN)] longLongValue];
+            int64_t callOutgoingWWAN = [dict[@(TGeVITANetworkUsageKeyCallOutgoingWWAN)] longLongValue];
+            int64_t callIncomingOther = [dict[@(TGeVITANetworkUsageKeyCallIncomingOther)] longLongValue];
+            int64_t callOutgoingOther = [dict[@(TGeVITANetworkUsageKeyCallOutgoingOther)] longLongValue];
             
             [strongSelf->_cellularDataInItem setVariant:[TGStringUtils stringForFileSize:dataIncomingWWAN + mediaGenericIncomingWWAN]];
             [strongSelf->_cellularDataOutItem setVariant:[TGStringUtils stringForFileSize:dataOutgoingWWAN + mediaGenericOutgoingWWAN]];
@@ -534,37 +534,37 @@ static SSignal *statsSignal(MTNetworkUsageCalculationInfo *baseInfo) {
             NSArray<NSNumber *> *keys = @[];
             if (strongSelf->_wifiMode) {
                 keys = @[
-                    @(TGTelegramNetworkUsageKeyDataIncomingOther),
-                    @(TGTelegramNetworkUsageKeyDataOutgoingOther),
-                    @(TGTelegramNetworkUsageKeyMediaGenericIncomingOther),
-                    @(TGTelegramNetworkUsageKeyMediaGenericOutgoingOther),
-                    @(TGTelegramNetworkUsageKeyMediaImageIncomingOther),
-                    @(TGTelegramNetworkUsageKeyMediaImageOutgoingOther),
-                    @(TGTelegramNetworkUsageKeyMediaVideoIncomingOther),
-                    @(TGTelegramNetworkUsageKeyMediaVideoOutgoingOther),
-                    @(TGTelegramNetworkUsageKeyMediaAudioIncomingOther),
-                    @(TGTelegramNetworkUsageKeyMediaAudioOutgoingOther),
-                    @(TGTelegramNetworkUsageKeyMediaDocumentIncomingOther),
-                    @(TGTelegramNetworkUsageKeyMediaDocumentOutgoingOther),
-                    @(TGTelegramNetworkUsageKeyCallIncomingOther),
-                    @(TGTelegramNetworkUsageKeyCallOutgoingOther),
+                    @(TGeVITANetworkUsageKeyDataIncomingOther),
+                    @(TGeVITANetworkUsageKeyDataOutgoingOther),
+                    @(TGeVITANetworkUsageKeyMediaGenericIncomingOther),
+                    @(TGeVITANetworkUsageKeyMediaGenericOutgoingOther),
+                    @(TGeVITANetworkUsageKeyMediaImageIncomingOther),
+                    @(TGeVITANetworkUsageKeyMediaImageOutgoingOther),
+                    @(TGeVITANetworkUsageKeyMediaVideoIncomingOther),
+                    @(TGeVITANetworkUsageKeyMediaVideoOutgoingOther),
+                    @(TGeVITANetworkUsageKeyMediaAudioIncomingOther),
+                    @(TGeVITANetworkUsageKeyMediaAudioOutgoingOther),
+                    @(TGeVITANetworkUsageKeyMediaDocumentIncomingOther),
+                    @(TGeVITANetworkUsageKeyMediaDocumentOutgoingOther),
+                    @(TGeVITANetworkUsageKeyCallIncomingOther),
+                    @(TGeVITANetworkUsageKeyCallOutgoingOther),
                 ];
             } else {
                 keys = @[
-                    @(TGTelegramNetworkUsageKeyDataIncomingWWAN),
-                    @(TGTelegramNetworkUsageKeyDataOutgoingWWAN),
-                    @(TGTelegramNetworkUsageKeyMediaGenericIncomingWWAN),
-                    @(TGTelegramNetworkUsageKeyMediaGenericOutgoingWWAN),
-                    @(TGTelegramNetworkUsageKeyMediaImageIncomingWWAN),
-                    @(TGTelegramNetworkUsageKeyMediaImageOutgoingWWAN),
-                    @(TGTelegramNetworkUsageKeyMediaVideoIncomingWWAN),
-                    @(TGTelegramNetworkUsageKeyMediaVideoOutgoingWWAN),
-                    @(TGTelegramNetworkUsageKeyMediaAudioIncomingWWAN),
-                    @(TGTelegramNetworkUsageKeyMediaAudioOutgoingWWAN),
-                    @(TGTelegramNetworkUsageKeyMediaDocumentIncomingWWAN),
-                    @(TGTelegramNetworkUsageKeyMediaDocumentOutgoingWWAN),
-                    @(TGTelegramNetworkUsageKeyCallIncomingWWAN),
-                    @(TGTelegramNetworkUsageKeyCallOutgoingWWAN),
+                    @(TGeVITANetworkUsageKeyDataIncomingWWAN),
+                    @(TGeVITANetworkUsageKeyDataOutgoingWWAN),
+                    @(TGeVITANetworkUsageKeyMediaGenericIncomingWWAN),
+                    @(TGeVITANetworkUsageKeyMediaGenericOutgoingWWAN),
+                    @(TGeVITANetworkUsageKeyMediaImageIncomingWWAN),
+                    @(TGeVITANetworkUsageKeyMediaImageOutgoingWWAN),
+                    @(TGeVITANetworkUsageKeyMediaVideoIncomingWWAN),
+                    @(TGeVITANetworkUsageKeyMediaVideoOutgoingWWAN),
+                    @(TGeVITANetworkUsageKeyMediaAudioIncomingWWAN),
+                    @(TGeVITANetworkUsageKeyMediaAudioOutgoingWWAN),
+                    @(TGeVITANetworkUsageKeyMediaDocumentIncomingWWAN),
+                    @(TGeVITANetworkUsageKeyMediaDocumentOutgoingWWAN),
+                    @(TGeVITANetworkUsageKeyCallIncomingWWAN),
+                    @(TGeVITANetworkUsageKeyCallOutgoingWWAN),
                 ];
             }
             [dataManager resetKeys:keys setKeys:@{} completion:^{

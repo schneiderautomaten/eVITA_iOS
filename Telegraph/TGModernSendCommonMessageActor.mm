@@ -3035,7 +3035,7 @@
                             [[TGInterfaceManager instance] navigateToConversationWithId:user.uid conversation:nil animated:true];
                         } error:^(id error) {
                             if (error == nil) {
-                                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://telegram.org/faq#can-39t-send-messages-to-non-contacts"]];
+                                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://eVITA.org/faq#can-39t-send-messages-to-non-contacts"]];
                             }
                         } completed:nil];
                     }

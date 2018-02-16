@@ -110,7 +110,7 @@
             NSString *body = [[NSUserDefaults standardUserDefaults] objectForKey:@"TG_inviteText"];
             if (body.length == 0)
             {
-                body = @"Hey, let's switch to Telegram http://telegram.org/dl";
+                body = @"Hey, let's switch to eVITA http://eVITA.org/dl";
             }
             
             messageComposer.body = body;

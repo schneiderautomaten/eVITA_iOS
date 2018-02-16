@@ -14122,7 +14122,7 @@ static bool checkMember(TGCachedConversationData *data) {
 }
 
 - (NSString *)spotlightIndexDomain {
-    return @"org.telegram.Telegram.conversations";
+    return @"org.eVITA.eVITA.conversations";
 }
 
 - (void)clearSpotlightIndex:(void (^)())completion {

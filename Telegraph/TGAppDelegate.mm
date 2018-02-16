@@ -798,7 +798,7 @@ static unsigned int overrideIndexAbove(__unused id self, __unused SEL _cmd)
                                  [self resetLoginState];
                              }
                              
-                             [self presentLoginController:false animated:false phoneNumber:stateDict[@"phoneNumber"] phoneCode:stateDict[@"phoneCode"] phoneCodeHash:stateDict[@"phoneCodeHash"] codeSentToTelegram:[stateDict[@"codeSentToTelegram"] boolValue] codeSentViaPhone:[stateDict[@"codeSentViaPhone"] boolValue] profileFirstName:stateDict[@"firstName"] profileLastName:stateDict[@"lastName"] resetAccountState:blockStateDict[@"resetAccountState"]];
+                             [self presentLoginController:false animated:false phoneNumber:stateDict[@"phoneNumber"] phoneCode:stateDict[@"phoneCode"] phoneCodeHash:stateDict[@"phoneCodeHash"] codeSentToeVITA:[stateDict[@"codeSentToeVITA"] boolValue] codeSentViaPhone:[stateDict[@"codeSentViaPhone"] boolValue] profileFirstName:stateDict[@"firstName"] profileLastName:stateDict[@"lastName"] resetAccountState:blockStateDict[@"resetAccountState"]];
                              
                              if (!TGIsPad())
                              {
@@ -1306,13 +1306,13 @@ static unsigned int overrideIndexAbove(__unused id self, __unused SEL _cmd)
     [(TGApplication *)[TGApplication sharedApplication] nativeOpenURL:realUrl];
 }
 
-- (void)presentLoginController:(bool)clearControllerStates animated:(bool)animated phoneNumber:(NSString *)phoneNumber phoneCode:(NSString *)phoneCode phoneCodeHash:(NSString *)phoneCodeHash codeSentToTelegram:(bool)codeSentToTelegram codeSentViaPhone:(bool)codeSentViaPhone profileFirstName:(NSString *)profileFirstName profileLastName:(NSString *)profileLastName resetAccountState:(TGResetAccountState *)resetAccountState
+- (void)presentLoginController:(bool)clearControllerStates animated:(bool)animated phoneNumber:(NSString *)phoneNumber phoneCode:(NSString *)phoneCode phoneCodeHash:(NSString *)phoneCodeHash codeSentToeVITA:(bool)codeSentToeVITA codeSentViaPhone:(bool)codeSentViaPhone profileFirstName:(NSString *)profileFirstName profileLastName:(NSString *)profileLastName resetAccountState:(TGResetAccountState *)resetAccountState
 {
     if (![[NSThread currentThread] isMainThread])
     {
         dispatch_async(dispatch_get_main_queue(), ^
         {
-            [self presentLoginController:clearControllerStates animated:animated phoneNumber:phoneNumber phoneCode:phoneCode phoneCodeHash:phoneCodeHash codeSentToTelegram:codeSentToTelegram codeSentViaPhone:codeSentViaPhone profileFirstName:profileFirstName profileLastName:profileLastName resetAccountState:resetAccountState];
+            [self presentLoginController:clearControllerStates animated:animated phoneNumber:phoneNumber phoneCode:phoneCode phoneCodeHash:phoneCodeHash codeSentToeVITA:codeSentToeVITA codeSentViaPhone:codeSentViaPhone profileFirstName:profileFirstName profileLastName:profileLastName resetAccountState:resetAccountState];
         });
         
         return;
@@ -1350,7 +1350,7 @@ static unsigned int overrideIndexAbove(__unused id self, __unused SEL _cmd)
             }
             else if (phoneCodeHash.length != 0)
             {
-                TGLoginCodeController *codeController = [[TGLoginCodeController alloc] initWithShowKeyboard:true phoneNumber:cleanPhone phoneCodeHash:phoneCodeHash phoneTimeout:60.0 messageSentToTelegram:codeSentToTelegram messageSentViaPhone:codeSentViaPhone];
+                TGLoginCodeController *codeController = [[TGLoginCodeController alloc] initWithShowKeyboard:true phoneNumber:cleanPhone phoneCodeHash:phoneCodeHash phoneTimeout:60.0 messageSentToeVITA:codeSentToeVITA messageSentViaPhone:codeSentViaPhone];
                 [viewControllers addObject:codeController];
             }
         }
@@ -1538,7 +1538,7 @@ static unsigned int overrideIndexAbove(__unused id self, __unused SEL _cmd)
         
         if (version >= 1)
         {
-            dict[@"codeSentToTelegram"] = @([is readInt32] != 0);
+            dict[@"codeSentToeVITA"] = @([is readInt32] != 0);
             
             if (version >= 2) {
                 dict[@"codeSentViaPhone"] = @([is readInt32] != 0);
@@ -1567,7 +1567,7 @@ static unsigned int overrideIndexAbove(__unused id self, __unused SEL _cmd)
     [[NSFileManager defaultManager] removeItemAtPath:[documentsDirectory stringByAppendingPathComponent:@"state.data"] error:nil];
 }
 
-- (void)saveLoginStateWithDate:(int)date phoneNumber:(NSString *)phoneNumber phoneCode:(NSString *)phoneCode phoneCodeHash:(NSString *)phoneCodeHash codeSentToTelegram:(bool)codeSentToTelegram codeSentViaPhone:(bool)codeSentViaPhone firstName:(NSString *)firstName lastName:(NSString *)lastName photo:(NSData *)photo resetAccountState:(TGResetAccountState *)resetAccountState
+- (void)saveLoginStateWithDate:(int)date phoneNumber:(NSString *)phoneNumber phoneCode:(NSString *)phoneCode phoneCodeHash:(NSString *)phoneCodeHash codeSentToeVITA:(bool)codeSentToeVITA codeSentViaPhone:(bool)codeSentViaPhone firstName:(NSString *)firstName lastName:(NSString *)lastName photo:(NSData *)photo resetAccountState:(TGResetAccountState *)resetAccountState
 {
     NSOutputStream *os = [[NSOutputStream alloc] initToMemory];
     [os open];
@@ -1583,7 +1583,7 @@ static unsigned int overrideIndexAbove(__unused id self, __unused SEL _cmd)
     [os writeString:firstName];
     [os writeString:lastName];
     [os writeBytes:photo];
-    [os writeInt32:codeSentToTelegram ? 1 : 0];
+    [os writeInt32:codeSentToeVITA ? 1 : 0];
     [os writeInt32:codeSentViaPhone ? 1 : 0];
     
     if (resetAccountState != nil) {
@@ -2829,7 +2829,7 @@ static unsigned int overrideIndexAbove(__unused id self, __unused SEL _cmd)
 - (void)handleOpenDocument:(NSURL *)url animated:(bool)__unused animated keepStack:(bool)keepStack
 {
     bool isSocks = false;
-    if ([url.scheme isEqualToString:@"telegram"] || [url.scheme isEqualToString:@"tg"]) {
+    if ([url.scheme isEqualToString:@"eVITA"] || [url.scheme isEqualToString:@"tg"]) {
         if ([url.resourceSpecifier hasPrefix:@"//socks?"]) {
             isSocks = true;
         }
@@ -2856,7 +2856,7 @@ static unsigned int overrideIndexAbove(__unused id self, __unused SEL _cmd)
                 });
             }
         }
-        else if ([url.scheme isEqualToString:@"telegram"] || [url.scheme isEqualToString:@"tg"])
+        else if ([url.scheme isEqualToString:@"eVITA"] || [url.scheme isEqualToString:@"tg"])
         {
             if ([url.resourceSpecifier hasPrefix:@"//share?"])
             {
@@ -3397,7 +3397,7 @@ static unsigned int overrideIndexAbove(__unused id self, __unused SEL _cmd)
 
 - (BOOL)application:(UIApplication *)__unused application willContinueUserActivityWithType:(NSString *)userActivityType
 {
-    if ([userActivityType isEqualToString:@"org.telegram.conversation"]) {
+    if ([userActivityType isEqualToString:@"org.eVITA.conversation"]) {
         if (_progressWindow != nil) {
             [_progressWindow dismiss:true];
         }
@@ -3415,7 +3415,7 @@ static unsigned int overrideIndexAbove(__unused id self, __unused SEL _cmd)
     
     if ([userActivity.activityType isEqualToString:@"NSUserActivityTypeBrowsingWeb"]) {
         [application openURL:userActivity.webpageURL];
-    } else if ([userActivity.activityType isEqualToString:@"org.telegram.conversation"]) {
+    } else if ([userActivity.activityType isEqualToString:@"org.eVITA.conversation"]) {
         if ([userActivity.userInfo[@"user_id"] intValue] == TGTelegraphInstance.clientUserId)
         {
             int64_t peerId = 0;

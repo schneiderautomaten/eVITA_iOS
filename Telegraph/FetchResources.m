@@ -5,8 +5,8 @@
 #import <LegacyComponents/TGRemoteImageView.h>
 
 SSignal *fetchResource(id<MediaResource> resource, NSRange range, TGNetworkMediaTypeTag mediaTypeTag) {
-    if ([resource conformsToProtocol:@protocol(TelegramCloudMediaResource)]) {
-        id<TelegramCloudMediaResource> cloudResource = (id<TelegramCloudMediaResource>)resource;
+    if ([resource conformsToProtocol:@protocol(eVITACloudMediaResource)]) {
+        id<eVITACloudMediaResource> cloudResource = (id<eVITACloudMediaResource>)resource;
         if ([resource isKindOfClass:[CloudFileMediaResource class]]) {
             CloudFileMediaResource *cloudFile = (CloudFileMediaResource *)cloudResource;
             if (cloudFile.legacyCacheUrl != nil) {

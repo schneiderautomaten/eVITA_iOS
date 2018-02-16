@@ -67,7 +67,7 @@ const NSInteger TGYTPlayerStateBufferingCode = 3;
     
     NSString *videoId =  _playerParams[@"videoId"];
     
-    NSURL *appUrl = [[NSURL alloc] initWithString:[[NSString alloc] initWithFormat:@"youtube-x-callback://watch?v=%@&x-success=telegram://1&x-source=Telegram", videoId]];
+    NSURL *appUrl = [[NSURL alloc] initWithString:[[NSString alloc] initWithFormat:@"youtube-x-callback://watch?v=%@&x-success=eVITA://1&x-source=eVITA", videoId]];
     
     if ([[LegacyComponentsGlobals provider] canOpenURL:appUrl])
     {

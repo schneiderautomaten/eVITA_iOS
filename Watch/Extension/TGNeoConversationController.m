@@ -523,7 +523,7 @@ const NSInteger TGNeoConversationControllerInitialRenderCount = 4;
     peerDict[@"id"] = @(peerId);
     
     NSDictionary *userInfo = @{@"user_id": @(_context.context.userId), @"peer": peerDict};
-    [self updateUserActivity:@"org.telegram.conversation" userInfo:userInfo webpageURL:[NSURL URLWithString:@"https://telegram.org/dl"]];
+    [self updateUserActivity:@"org.eVITA.conversation" userInfo:userInfo webpageURL:[NSURL URLWithString:@"https://eVITA.org/dl"]];
 }
 
 #pragma mark -

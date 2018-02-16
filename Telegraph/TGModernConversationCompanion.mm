@@ -2428,7 +2428,7 @@ static void dispatchOnMessageQueue(dispatch_block_t block, bool synchronous)
             NSString *youtubeVideoId = [self youtubeVideoIdFromText:options[@"url"]];
             if (youtubeVideoId.length != 0)
             {
-                NSURL *clientUrl = [[NSURL alloc] initWithString:[[NSString alloc] initWithFormat:@"youtube-x-callback://watch?v=%@&x-success=telegram://1&x-source=Telegram", youtubeVideoId]];
+                NSURL *clientUrl = [[NSURL alloc] initWithString:[[NSString alloc] initWithFormat:@"youtube-x-callback://watch?v=%@&x-success=eVITA://1&x-source=eVITA", youtubeVideoId]];
                 if ([[UIApplication sharedApplication] canOpenURL:clientUrl])
                 {
                     [[UIApplication sharedApplication] openURL:clientUrl];

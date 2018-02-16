@@ -1,5 +1,5 @@
 /*
- * This is the source code of Telegram for iOS v. 1.1
+ * This is the source code of eVITA for iOS v. 1.1
  * It is licensed under GNU GPL v. 2 or later.
  * You should have received a copy of the license in this archive (see LICENSE).
  *
@@ -53,41 +53,41 @@ typedef enum {
 } TGNetworkMediaTypeTag;
 
 typedef enum {
-    TGTelegramNetworkUsageKeyDataIncomingWWAN = 0,
-    TGTelegramNetworkUsageKeyDataOutgoingWWAN = 1,
-    TGTelegramNetworkUsageKeyDataIncomingOther = 2,
-    TGTelegramNetworkUsageKeyDataOutgoingOther = 3,
+    TGeVITANetworkUsageKeyDataIncomingWWAN = 0,
+    TGeVITANetworkUsageKeyDataOutgoingWWAN = 1,
+    TGeVITANetworkUsageKeyDataIncomingOther = 2,
+    TGeVITANetworkUsageKeyDataOutgoingOther = 3,
     
-    TGTelegramNetworkUsageKeyMediaGenericIncomingWWAN = 4,
-    TGTelegramNetworkUsageKeyMediaGenericOutgoingWWAN = 5,
-    TGTelegramNetworkUsageKeyMediaGenericIncomingOther = 6,
-    TGTelegramNetworkUsageKeyMediaGenericOutgoingOther = 7,
+    TGeVITANetworkUsageKeyMediaGenericIncomingWWAN = 4,
+    TGeVITANetworkUsageKeyMediaGenericOutgoingWWAN = 5,
+    TGeVITANetworkUsageKeyMediaGenericIncomingOther = 6,
+    TGeVITANetworkUsageKeyMediaGenericOutgoingOther = 7,
     
-    TGTelegramNetworkUsageKeyMediaImageIncomingWWAN = 8,
-    TGTelegramNetworkUsageKeyMediaImageOutgoingWWAN = 9,
-    TGTelegramNetworkUsageKeyMediaImageIncomingOther = 10,
-    TGTelegramNetworkUsageKeyMediaImageOutgoingOther = 11,
+    TGeVITANetworkUsageKeyMediaImageIncomingWWAN = 8,
+    TGeVITANetworkUsageKeyMediaImageOutgoingWWAN = 9,
+    TGeVITANetworkUsageKeyMediaImageIncomingOther = 10,
+    TGeVITANetworkUsageKeyMediaImageOutgoingOther = 11,
     
-    TGTelegramNetworkUsageKeyMediaVideoIncomingWWAN = 12,
-    TGTelegramNetworkUsageKeyMediaVideoOutgoingWWAN = 13,
-    TGTelegramNetworkUsageKeyMediaVideoIncomingOther = 14,
-    TGTelegramNetworkUsageKeyMediaVideoOutgoingOther = 15,
+    TGeVITANetworkUsageKeyMediaVideoIncomingWWAN = 12,
+    TGeVITANetworkUsageKeyMediaVideoOutgoingWWAN = 13,
+    TGeVITANetworkUsageKeyMediaVideoIncomingOther = 14,
+    TGeVITANetworkUsageKeyMediaVideoOutgoingOther = 15,
     
-    TGTelegramNetworkUsageKeyMediaAudioIncomingWWAN = 16,
-    TGTelegramNetworkUsageKeyMediaAudioOutgoingWWAN = 17,
-    TGTelegramNetworkUsageKeyMediaAudioIncomingOther = 18,
-    TGTelegramNetworkUsageKeyMediaAudioOutgoingOther = 19,
+    TGeVITANetworkUsageKeyMediaAudioIncomingWWAN = 16,
+    TGeVITANetworkUsageKeyMediaAudioOutgoingWWAN = 17,
+    TGeVITANetworkUsageKeyMediaAudioIncomingOther = 18,
+    TGeVITANetworkUsageKeyMediaAudioOutgoingOther = 19,
     
-    TGTelegramNetworkUsageKeyMediaDocumentIncomingWWAN = 20,
-    TGTelegramNetworkUsageKeyMediaDocumentOutgoingWWAN = 21,
-    TGTelegramNetworkUsageKeyMediaDocumentIncomingOther = 22,
-    TGTelegramNetworkUsageKeyMediaDocumentOutgoingOther = 23,
+    TGeVITANetworkUsageKeyMediaDocumentIncomingWWAN = 20,
+    TGeVITANetworkUsageKeyMediaDocumentOutgoingWWAN = 21,
+    TGeVITANetworkUsageKeyMediaDocumentIncomingOther = 22,
+    TGeVITANetworkUsageKeyMediaDocumentOutgoingOther = 23,
     
-    TGTelegramNetworkUsageKeyCallIncomingWWAN = 24,
-    TGTelegramNetworkUsageKeyCallOutgoingWWAN = 25,
-    TGTelegramNetworkUsageKeyCallIncomingOther = 26,
-    TGTelegramNetworkUsageKeyCallOutgoingOther = 27,
-} TGTelegramNetworkUsageKey;
+    TGeVITANetworkUsageKeyCallIncomingWWAN = 24,
+    TGeVITANetworkUsageKeyCallOutgoingWWAN = 25,
+    TGeVITANetworkUsageKeyCallIncomingOther = 26,
+    TGeVITANetworkUsageKeyCallOutgoingOther = 27,
+} TGeVITANetworkUsageKey;
 
 @interface TGTelegramNetworking : NSObject
 

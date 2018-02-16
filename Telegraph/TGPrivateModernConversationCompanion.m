@@ -656,7 +656,7 @@ static NSMutableDictionary *dismissedContactLinkPanelsByUserId()
     }
     
     if (user.uid == [TGTelegraphInstance serviceUserUid])
-        return @"Telegram";
+        return @"eVITA";
     
     if (user.uid == [TGTelegraphInstance voipSupportUserUid])
         return @"VoIP Support";

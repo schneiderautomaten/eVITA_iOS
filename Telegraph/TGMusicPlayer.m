@@ -1008,7 +1008,7 @@ static TGMusicPlayerDownloadingStatus TGMusicPlayerDownloadingStatusMake(bool do
                             if ([attribute isKindOfClass:[TGDocumentAttributeAudio class]]) {
                                 if (((TGDocumentAttributeAudio *)attribute).isVoice) {
                                     title = TGLocalized(@"MusicPlayer.VoiceNote");
-                                    performer = @"Telegram";
+                                    performer = @"eVITA";
                                 }
                                 break;
                             }

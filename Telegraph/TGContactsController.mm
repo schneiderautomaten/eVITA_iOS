@@ -1134,7 +1134,7 @@ static bool TGContactListSectionComparator(std::shared_ptr<TGContactListSection>
             inviteLabel.backgroundColor = [UIColor clearColor];
             inviteLabel.textColor = TGAccentColor();
             inviteLabel.font = TGMediumSystemFontOfSize(17);
-            inviteLabel.text = TGLocalized(@"Contacts.InviteToTelegram");
+            inviteLabel.text = TGLocalized(@"Contacts.InviteToeVITA");
             [inviteLabel sizeToFit];
             inviteLabel.tag = 100;
             [alignmentContainer addSubview:inviteLabel];

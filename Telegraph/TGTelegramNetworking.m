@@ -117,7 +117,7 @@ MTInternalIdClass(TGDownloadWorker)
 
 @implementation TGTelegramNetworking
 
-static void TGTelegramLoggingFunction(NSString *format, va_list args)
+static void TGeVITALoggingFunction(NSString *format, va_list args)
 {
     TGLogv(format, args);
 }
@@ -134,7 +134,7 @@ static TGTelegramNetworking *singleton = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
     {
-        MTLogSetLoggingFunction(&TGTelegramLoggingFunction);
+        MTLogSetLoggingFunction(&TGeVITALoggingFunction);
         
         singleton = [[TGTelegramNetworking alloc] initWithSocksProxyData:initialSocksProxyData];
     });
@@ -156,11 +156,11 @@ static TGTelegramNetworking *singleton = nil;
         
         _currentWakeUpCompletions = [[NSMutableArray alloc] init];
         
-        _settingsKeychain = [MTFileBasedKeychain keychainWithName:@"Telegram-Settings" documentsPath:[TGAppDelegate documentsPath]];
+        _settingsKeychain = [MTFileBasedKeychain keychainWithName:@"eVITA-Settings" documentsPath:[TGAppDelegate documentsPath]];
         NSString *environmentId = [_settingsKeychain objectForKey:@"environmentId" group:@"environment"];
         _isTestingEnvironment = environmentId != nil && [environmentId isEqualToString:@"testing"];
         
-        NSString *keychainName = _isTestingEnvironment ? @"Telegram-Testing" : @"Telegram";
+        NSString *keychainName = _isTestingEnvironment ? @"eVITA-Testing" : @"eVITA";
         _keychain = [MTFileBasedKeychain keychainWithName:keychainName documentsPath:[TGAppDelegate documentsPath]];
         
         _cdnDatas = [[NSMutableDictionary alloc] init];
@@ -1678,25 +1678,25 @@ static TGTelegramNetworking *singleton = nil;
 }
 
 - (MTNetworkUsageCalculationInfo *)dataUsageInfo {
-    return [[MTNetworkUsageCalculationInfo alloc] initWithFilePath:[self baseUsagePath] incomingWWANKey:TGTelegramNetworkUsageKeyDataIncomingWWAN outgoingWWANKey:TGTelegramNetworkUsageKeyDataOutgoingWWAN incomingOtherKey:TGTelegramNetworkUsageKeyDataIncomingOther outgoingOtherKey:TGTelegramNetworkUsageKeyDataOutgoingOther];
+    return [[MTNetworkUsageCalculationInfo alloc] initWithFilePath:[self baseUsagePath] incomingWWANKey:TGeVITANetworkUsageKeyDataIncomingWWAN outgoingWWANKey:TGeVITANetworkUsageKeyDataOutgoingWWAN incomingOtherKey:TGeVITANetworkUsageKeyDataIncomingOther outgoingOtherKey:TGeVITANetworkUsageKeyDataOutgoingOther];
 }
 
 - (MTNetworkUsageCalculationInfo *)mediaUsageInfoForType:(TGNetworkMediaTypeTag)type {
     switch (type) {
         case TGNetworkMediaTypeTagGeneric:
-            return [[MTNetworkUsageCalculationInfo alloc] initWithFilePath:[self baseUsagePath] incomingWWANKey:TGTelegramNetworkUsageKeyMediaGenericIncomingWWAN outgoingWWANKey:TGTelegramNetworkUsageKeyMediaGenericOutgoingWWAN incomingOtherKey:TGTelegramNetworkUsageKeyMediaGenericIncomingOther outgoingOtherKey:TGTelegramNetworkUsageKeyMediaGenericOutgoingOther];
+            return [[MTNetworkUsageCalculationInfo alloc] initWithFilePath:[self baseUsagePath] incomingWWANKey:TGeVITANetworkUsageKeyMediaGenericIncomingWWAN outgoingWWANKey:TGeVITANetworkUsageKeyMediaGenericOutgoingWWAN incomingOtherKey:TGeVITANetworkUsageKeyMediaGenericIncomingOther outgoingOtherKey:TGeVITANetworkUsageKeyMediaGenericOutgoingOther];
         case TGNetworkMediaTypeTagImage:
-            return [[MTNetworkUsageCalculationInfo alloc] initWithFilePath:[self baseUsagePath] incomingWWANKey:TGTelegramNetworkUsageKeyMediaImageIncomingWWAN outgoingWWANKey:TGTelegramNetworkUsageKeyMediaImageOutgoingWWAN incomingOtherKey:TGTelegramNetworkUsageKeyMediaImageIncomingOther outgoingOtherKey:TGTelegramNetworkUsageKeyMediaImageOutgoingOther];
+            return [[MTNetworkUsageCalculationInfo alloc] initWithFilePath:[self baseUsagePath] incomingWWANKey:TGeVITANetworkUsageKeyMediaImageIncomingWWAN outgoingWWANKey:TGeVITANetworkUsageKeyMediaImageOutgoingWWAN incomingOtherKey:TGeVITANetworkUsageKeyMediaImageIncomingOther outgoingOtherKey:TGeVITANetworkUsageKeyMediaImageOutgoingOther];
         case TGNetworkMediaTypeTagVideo:
-            return [[MTNetworkUsageCalculationInfo alloc] initWithFilePath:[self baseUsagePath] incomingWWANKey:TGTelegramNetworkUsageKeyMediaVideoIncomingWWAN outgoingWWANKey:TGTelegramNetworkUsageKeyMediaVideoOutgoingWWAN incomingOtherKey:TGTelegramNetworkUsageKeyMediaVideoIncomingOther outgoingOtherKey:TGTelegramNetworkUsageKeyMediaVideoOutgoingOther];
+            return [[MTNetworkUsageCalculationInfo alloc] initWithFilePath:[self baseUsagePath] incomingWWANKey:TGeVITANetworkUsageKeyMediaVideoIncomingWWAN outgoingWWANKey:TGeVITANetworkUsageKeyMediaVideoOutgoingWWAN incomingOtherKey:TGeVITANetworkUsageKeyMediaVideoIncomingOther outgoingOtherKey:TGeVITANetworkUsageKeyMediaVideoOutgoingOther];
         case TGNetworkMediaTypeTagAudio:
-            return [[MTNetworkUsageCalculationInfo alloc] initWithFilePath:[self baseUsagePath] incomingWWANKey:TGTelegramNetworkUsageKeyMediaAudioIncomingWWAN outgoingWWANKey:TGTelegramNetworkUsageKeyMediaAudioOutgoingWWAN incomingOtherKey:TGTelegramNetworkUsageKeyMediaAudioIncomingOther outgoingOtherKey:TGTelegramNetworkUsageKeyMediaAudioOutgoingOther];
+            return [[MTNetworkUsageCalculationInfo alloc] initWithFilePath:[self baseUsagePath] incomingWWANKey:TGeVITANetworkUsageKeyMediaAudioIncomingWWAN outgoingWWANKey:TGeVITANetworkUsageKeyMediaAudioOutgoingWWAN incomingOtherKey:TGeVITANetworkUsageKeyMediaAudioIncomingOther outgoingOtherKey:TGeVITANetworkUsageKeyMediaAudioOutgoingOther];
         case TGNetworkMediaTypeTagDocument:
-            return [[MTNetworkUsageCalculationInfo alloc] initWithFilePath:[self baseUsagePath] incomingWWANKey:TGTelegramNetworkUsageKeyMediaDocumentIncomingWWAN outgoingWWANKey:TGTelegramNetworkUsageKeyMediaDocumentOutgoingWWAN incomingOtherKey:TGTelegramNetworkUsageKeyMediaDocumentIncomingOther outgoingOtherKey:TGTelegramNetworkUsageKeyMediaDocumentOutgoingOther];
+            return [[MTNetworkUsageCalculationInfo alloc] initWithFilePath:[self baseUsagePath] incomingWWANKey:TGeVITANetworkUsageKeyMediaDocumentIncomingWWAN outgoingWWANKey:TGeVITANetworkUsageKeyMediaDocumentOutgoingWWAN incomingOtherKey:TGeVITANetworkUsageKeyMediaDocumentIncomingOther outgoingOtherKey:TGeVITANetworkUsageKeyMediaDocumentOutgoingOther];
         case TGNetworkMediaTypeTagCall:
-            return [[MTNetworkUsageCalculationInfo alloc] initWithFilePath:[self baseUsagePath] incomingWWANKey:TGTelegramNetworkUsageKeyCallIncomingWWAN outgoingWWANKey:TGTelegramNetworkUsageKeyCallOutgoingWWAN incomingOtherKey:TGTelegramNetworkUsageKeyCallIncomingOther outgoingOtherKey:TGTelegramNetworkUsageKeyCallOutgoingOther];
+            return [[MTNetworkUsageCalculationInfo alloc] initWithFilePath:[self baseUsagePath] incomingWWANKey:TGeVITANetworkUsageKeyCallIncomingWWAN outgoingWWANKey:TGeVITANetworkUsageKeyCallOutgoingWWAN incomingOtherKey:TGeVITANetworkUsageKeyCallIncomingOther outgoingOtherKey:TGeVITANetworkUsageKeyCallOutgoingOther];
         default:
-            return [[MTNetworkUsageCalculationInfo alloc] initWithFilePath:[self baseUsagePath] incomingWWANKey:TGTelegramNetworkUsageKeyMediaGenericIncomingWWAN outgoingWWANKey:TGTelegramNetworkUsageKeyMediaGenericOutgoingWWAN incomingOtherKey:TGTelegramNetworkUsageKeyMediaGenericIncomingOther outgoingOtherKey:TGTelegramNetworkUsageKeyMediaGenericOutgoingOther];
+            return [[MTNetworkUsageCalculationInfo alloc] initWithFilePath:[self baseUsagePath] incomingWWANKey:TGeVITANetworkUsageKeyMediaGenericIncomingWWAN outgoingWWANKey:TGeVITANetworkUsageKeyMediaGenericOutgoingWWAN incomingOtherKey:TGeVITANetworkUsageKeyMediaGenericIncomingOther outgoingOtherKey:TGeVITANetworkUsageKeyMediaGenericOutgoingOther];
     }
 }
 

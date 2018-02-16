@@ -3,7 +3,7 @@
 #import "MediaResource.h"
 #import "TelegramCloudMediaResource.h"
 
-@interface CloudFileMediaResource: NSObject <TelegramCloudMediaResource>
+@interface CloudFileMediaResource: NSObject <eVITACloudMediaResource>
 
 @property (nonatomic, readonly) int32_t datacenterId;
 @property (nonatomic, readonly) int64_t volumeId;
@@ -20,7 +20,7 @@
 
 @end
 
-@interface CloudDocumentMediaResource: NSObject <TelegramCloudMediaResource>
+@interface CloudDocumentMediaResource: NSObject <eVITACloudMediaResource>
 
 @property (nonatomic, readonly) int32_t datacenterId;
 @property (nonatomic, readonly) int64_t fileId;

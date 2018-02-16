@@ -97,7 +97,7 @@ const NSInteger TGVideoCameraRetainedBufferCount = 16;
         _liveUploadInterface = liveUploadInterface;
         _preferredPosition = position;
 		
-		_videoDataOutputQueue = dispatch_queue_create("org.telegram.VideoCameraPipeline.video", DISPATCH_QUEUE_SERIAL);
+		_videoDataOutputQueue = dispatch_queue_create("org.eVITA.VideoCameraPipeline.video", DISPATCH_QUEUE_SERIAL);
 		dispatch_set_target_queue(_videoDataOutputQueue, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0));
 		
 		_renderer = [[TGVideoCameraGLRenderer alloc] init];
@@ -162,7 +162,7 @@ const NSInteger TGVideoCameraRetainedBufferCount = 16;
 		[_captureSession addInput:_audioInput];
 	
 	_audioOutput = [[AVCaptureAudioDataOutput alloc] init];
-	_audioDataOutputQueue = dispatch_queue_create("org.telegram.VideoCameraPipeline.audio", DISPATCH_QUEUE_SERIAL);
+	_audioDataOutputQueue = dispatch_queue_create("org.eVITA.VideoCameraPipeline.audio", DISPATCH_QUEUE_SERIAL);
 	[_audioOutput setSampleBufferDelegate:self queue:_audioDataOutputQueue];
 	
 	if ([_captureSession canAddOutput:_audioOutput])
@@ -668,7 +668,7 @@ const NSInteger TGVideoCameraRetainedBufferCount = 16;
 		[self transitionToRecordingStatus:TGVideoCameraRecordingStatusStartingRecording error:nil];
 	}
 	
-	dispatch_queue_t callbackQueue = dispatch_queue_create("org.telegram.VideoCameraPipeline.recorder", DISPATCH_QUEUE_SERIAL);
+	dispatch_queue_t callbackQueue = dispatch_queue_create("org.eVITA.VideoCameraPipeline.recorder", DISPATCH_QUEUE_SERIAL);
 	TGVideoCameraMovieRecorder *recorder = [[TGVideoCameraMovieRecorder alloc] initWithURL:_recordingURL delegate:self callbackQueue:callbackQueue];
 	
     NSDictionary *audioSettings = [TGMediaVideoConversionPresetSettings audioSettingsForPreset:preset];

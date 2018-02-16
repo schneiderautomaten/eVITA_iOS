@@ -112,7 +112,7 @@
         
         [attributedText setAttributes:subAttrs range:NSMakeRange([textFormat rangeOfString:@"%1$@"].location, _userName.length)];
         [attributedText setAttributes:subAttrs range:NSMakeRange([textFormat rangeOfString:@"%2$@"].location + (_userName.length - @"%1$@".length), _userName.length)];
-        [attributedText setAttributes:linkAtts range:[baseText rangeOfString:@"telegram.org"]];
+        [attributedText setAttributes:linkAtts range:[baseText rangeOfString:@"eVITA.org"]];
         
         [_descriptionLabel setAttributedText:attributedText];
     }
@@ -267,10 +267,10 @@
         
         _descriptionLabel.frame = CGRectMake(CGFloor((screenSize.width - labelSize.width) / 2), _keyImageView.frame.origin.y + _keyImageView.frame.size.height + 24 + topInset, labelSize.width, labelSize.height);
         
-        NSString *lineText = @"Learn more at telegram.org";
+        NSString *lineText = @"Learn more at eVITA.org";
         CGFloat lastWidth = [lineText sizeWithFont:_descriptionLabel.font].width;
         CGFloat prefixWidth = [@"Learn more at " sizeWithFont:_descriptionLabel.font].width;
-        CGFloat suffixWidth = [@"telegram.org" sizeWithFont:_descriptionLabel.font].width;
+        CGFloat suffixWidth = [@"eVITA.org" sizeWithFont:_descriptionLabel.font].width;
         
         _linkButton.frame = CGRectMake(_descriptionLabel.frame.origin.x + CGFloor((_descriptionLabel.frame.size.width - lastWidth) / 2) + prefixWidth - 3, _descriptionLabel.frame.origin.y + _descriptionLabel.frame.size.height - 18, suffixWidth + 4, 19);
     }
@@ -314,10 +314,10 @@
             _emojiLabel.frame = CGRectMake(floor(_fingerprintLabel.frame.origin.x + (_fingerprintLabel.frame.size.width - _emojiLabel.frame.size.width) / 2.0f), floor(_fingerprintLabel.frame.origin.y + (_fingerprintLabel.frame.size.height - _emojiLabel.frame.size.height) / 2.0f), _emojiLabel.frame.size.width, _emojiLabel.frame.size.height);
         }
         
-        NSString *lineText = @"Learn more at telegram.org";
+        NSString *lineText = @"Learn more at eVITA.org";
         CGFloat lastWidth = [lineText sizeWithFont:_descriptionLabel.font].width;
         CGFloat prefixWidth = [@"Learn more at " sizeWithFont:_descriptionLabel.font].width;
-        CGFloat suffixWidth = [@"telegram.org" sizeWithFont:_descriptionLabel.font].width;
+        CGFloat suffixWidth = [@"eVITA.org" sizeWithFont:_descriptionLabel.font].width;
         
         _linkButton.frame = CGRectMake(_descriptionLabel.frame.origin.x + CGFloor((_descriptionLabel.frame.size.width - lastWidth) / 2) + prefixWidth - 3, _descriptionLabel.frame.origin.y + _descriptionLabel.frame.size.height - 18, suffixWidth + 4, 19);
     }
@@ -325,7 +325,7 @@
 
 - (void)linkButtonPressed
 {
-    [[UIApplication sharedApplication] openURL:[[NSURL alloc] initWithString:@"https://telegram.org/faq#secret-chats"]];
+    [[UIApplication sharedApplication] openURL:[[NSURL alloc] initWithString:@"https://eVITA.org/faq#secret-chats"]];
 }
 
 - (void)keyTapped:(id)__unused sender

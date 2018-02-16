@@ -43,7 +43,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
     {
-        queue = [[ASQueue alloc] initWithName:"org.telegram.TGAnimatedImageMessageViewModel_processingQueue"];
+        queue = [[ASQueue alloc] initWithName:"org.eVITA.TGAnimatedImageMessageViewModel_processingQueue"];
     });
     
     return queue;

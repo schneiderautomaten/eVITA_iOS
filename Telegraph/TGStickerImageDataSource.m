@@ -37,7 +37,7 @@ static ASQueue *taskManagementQueue()
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
     {
-        queue = [[ASQueue alloc] initWithName:"org.telegram.stickerImageTaskManagementQueue"];
+        queue = [[ASQueue alloc] initWithName:"org.eVITA.stickerImageTaskManagementQueue"];
     });
     
     return queue;

@@ -37,7 +37,7 @@ static ASQueue *taskManagementQueue()
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
     {
-        queue = [[ASQueue alloc] initWithName:"org.telegram.fileThumbnailTaskManagementQueue"];
+        queue = [[ASQueue alloc] initWithName:"org.eVITA.fileThumbnailTaskManagementQueue"];
     });
     
     return queue;

@@ -6147,7 +6147,7 @@ typedef enum {
     
     if (contact.uid > 0) {
         [actions addObject:[[TGActionSheetAction alloc] initWithTitle:TGLocalized(@"Conversation.SendMessage") action:@"sendMessage"]];
-        [actions addObject:[[TGActionSheetAction alloc] initWithTitle:TGLocalized(@"UserInfo.TelegramCall") action:@"telegramCall"]];
+        [actions addObject:[[TGActionSheetAction alloc] initWithTitle:TGLocalized(@"UserInfo.eVITACall") action:@"eVITACall"]];
     }
     
     [actions addObject:[[TGActionSheetAction alloc] initWithTitle:TGLocalized(@"UserInfo.PhoneCall") action:@"call"]];
@@ -6164,7 +6164,7 @@ typedef enum {
                                           NSString *url = [[NSString alloc] initWithFormat:@"tel:%@", [TGPhoneUtils formatPhoneUrl:contact.phoneNumber]];
                                           [TGAppDelegateInstance performPhoneCall:[NSURL URLWithString:url]];
                                       }
-                                      else if ([action isEqualToString:@"telegramCall"])
+                                      else if ([action isEqualToString:@"eVITACall"])
                                       {
                                           [[TGInterfaceManager instance] callPeerWithId:contact.uid];
                                       }
@@ -8826,7 +8826,7 @@ typedef enum {
      @"public.video",
      @"public.movie",
      @"public.font",
-     @"org.telegram.Telegram.webp",
+     @"org.eVITA.eVITA.webp",
      @"com.apple.iwork.pages.pages",
      @"com.apple.iwork.numbers.numbers",
      @"com.apple.iwork.keynote.key"

@@ -359,7 +359,7 @@ const NSUInteger TGNeoChatsControllerForwardLimit = 20;
             self.activityIndicator.hidden = true;
             self.table.hidden = true;
             self.authAlertGroup.hidden = false;
-            self.authAlertLabel.text = @"Unlock Telegram on your phone";
+            self.authAlertLabel.text = @"Unlock eVITA on your phone";
             self.authAlertImageGroup.hidden = false;
             [self.authAlertImage setImageNamed:@"PasscodeIcon"];
             self.authAlertDescLabel.hidden = true;

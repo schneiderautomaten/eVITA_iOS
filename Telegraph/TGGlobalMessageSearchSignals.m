@@ -26,7 +26,7 @@
 #import "TLRPCmessages_search.h"
 #import "TLChat$channel.h"
 
-NSString *const TGRecentSearchDefaultsKey = @"Telegram_recentSearch_peers";
+NSString *const TGRecentSearchDefaultsKey = @"eVITA_recentSearch_peers";
 const NSInteger TGRecentSearchLimit = 20;
 
 @implementation TGGlobalMessageSearchSignals

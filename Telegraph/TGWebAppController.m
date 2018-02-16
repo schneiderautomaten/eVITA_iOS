@@ -196,11 +196,11 @@
         WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
         
         WKUserContentController *userController = [[WKUserContentController alloc] init];
-        NSString *js = @"var TelegramWebviewProxyProto = function() {}; \
-        TelegramWebviewProxyProto.prototype.postEvent = function(eventName, eventData) { \
+        NSString *js = @"var eVITAWebviewProxyProto = function() {}; \
+        eVITAWebviewProxyProto.prototype.postEvent = function(eventName, eventData) { \
         window.webkit.messageHandlers.performAction.postMessage({'eventName': eventName, 'eventData': eventData}); \
         };\
-        var TelegramWebviewProxy = new TelegramWebviewProxyProto();";
+        var eVITAWebviewProxy = new eVITAWebviewProxyProto();";
         
         WKUserScript *userScript = [[WKUserScript alloc] initWithSource:js injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:false];
         [userController addUserScript:userScript];
@@ -236,17 +236,17 @@
                 if (strongSelf != nil) {
                     TGLog(@"legacy event received: %@", event);
                 }
-            }] forKey:@"TelegramEventProxy"];
+            }] forKey:@"eVITAEventProxy"];
         }*/
         _webView = webView;
         if ([[_url.absoluteString lowercaseString] hasPrefix:@"http://"] || [[_url.absoluteString lowercaseString] hasPrefix:@"https://"]) {
             [webView loadRequest:[NSURLRequest requestWithURL:_url]];
             
-            NSString *js = @"var TelegramWebviewProxyProto = function() {}; \
-            TelegramWebviewProxyProto.prototype.postEvent = function(eventName, eventData) { \
-            window.TelegramEventProxy.postMessage({'eventName': eventName, 'eventData': eventData}); \
+            NSString *js = @"var eVITAWebviewProxyProto = function() {}; \
+            eVITAWebviewProxyProto.prototype.postEvent = function(eventName, eventData) { \
+            window.eVITAEventProxy.postMessage({'eventName': eventName, 'eventData': eventData}); \
             };\
-            var TelegramWebviewProxy = new TelegramWebviewProxyProto();";
+            var eVITAWebviewProxy = new eVITAWebviewProxyProto();";
             [webView stringByEvaluatingJavaScriptFromString:js];
         }
     }
@@ -295,7 +295,7 @@
     if ([navigationAction.request.URL.host isEqualToString:_url.host]) {
         decisionHandler(WKNavigationActionPolicyAllow);
     } else {
-        if ([navigationAction.request.URL.host isEqualToString:@"telegram.me"] || [navigationAction.request.URL.host isEqualToString:@"t.me"]) {
+        if ([navigationAction.request.URL.host isEqualToString:@"eVITA.me"] || [navigationAction.request.URL.host isEqualToString:@"t.me"]) {
             [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
             decisionHandler(WKNavigationActionPolicyCancel);
         } else {

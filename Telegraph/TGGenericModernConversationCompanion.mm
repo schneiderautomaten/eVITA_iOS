@@ -5062,7 +5062,7 @@ static NSString *addGameShareHash(NSString *url, NSString *addHash) {
                         hiddenLink = false;
                     }
                 }
-                if (hiddenLink && ([url hasPrefix:@"http://telegram.me/"] || [url hasPrefix:@"http://t.me/"] || [url hasPrefix:@"https://telegram.me/"] || [url hasPrefix:@"https://t.me/"])) {
+                if (hiddenLink && ([url hasPrefix:@"http://eVITA.me/"] || [url hasPrefix:@"http://t.me/"] || [url hasPrefix:@"https://eVITA.me/"] || [url hasPrefix:@"https://t.me/"])) {
                     hiddenLink = false;
                 }
                 [self actionStageActionRequested:@"openLinkRequested" options:@{@"url": url, @"hidden": @(hiddenLink)}];

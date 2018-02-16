@@ -94,7 +94,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>org.telegram.TelegramHD.compatibility</string>
+			<string>org.telegram.eVITAHD.compatibility</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>tg</string>
@@ -112,7 +112,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>67591</string>
+	<string>67602</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>ITSAppUsesNonExemptEncryption </key>

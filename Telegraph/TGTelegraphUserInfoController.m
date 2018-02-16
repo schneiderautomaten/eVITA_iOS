@@ -946,7 +946,7 @@ static UIView *_findBackArrow(UIView *view)
         
             if (_supportsCalls)
             {
-                TGMenuSheetButtonItemView *telegramItem = [[TGMenuSheetButtonItemView alloc] initWithTitle:TGLocalized(@"UserInfo.TelegramCall") type:TGMenuSheetButtonTypeDefault action:^
+                TGMenuSheetButtonItemView *eVITAItem = [[TGMenuSheetButtonItemView alloc] initWithTitle:TGLocalized(@"UserInfo.eVITACall") type:TGMenuSheetButtonTypeDefault action:^
                 {
                     __strong TGTelegraphUserInfoController *strongSelf = weakSelf;
                     if (strongSelf != nil)
@@ -965,7 +965,7 @@ static UIView *_findBackArrow(UIView *view)
                         [strongController dismissAnimated:true];
                 }];
                 
-                [controller setItemViews:@[ titleItem, telegramItem, phoneItem, cancelItem ]];
+                [controller setItemViews:@[ titleItem, eVITAItem, phoneItem, cancelItem ]];
             }
             else
             {

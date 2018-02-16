@@ -4,7 +4,7 @@
 
 @class TLInputFileLocation;
 
-@protocol TelegramCloudMediaResource <MediaResource>
+@protocol eVITACloudMediaResource <MediaResource>
 
 - (int32_t)datacenterId;
 - (TLInputFileLocation *)apiInputLocation;

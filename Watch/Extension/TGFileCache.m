@@ -1,7 +1,7 @@
 #import "TGFileCache.h"
 #import "TGStringUtils.h"
 
-NSString *const TGFileCacheDomain = @"com.telegram.FileCache";
+NSString *const TGFileCacheDomain = @"com.eVITA.FileCache";
 
 @interface TGFileCache ()
 {

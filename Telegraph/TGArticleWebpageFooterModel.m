@@ -531,11 +531,11 @@ static UIImage *durationGameBackgroundImage()
         NSString *buttonType = nil;
         if (_webPage.instantPage != nil && !isInstantGallery)
             buttonType = @"instantPage";
-        else if ([_webPage.pageType isEqualToString:@"telegram_channel"])
+        else if ([_webPage.pageType isEqualToString:@"eVITA_channel"])
             buttonType = @"viewChannel";
-        else if ([_webPage.pageType isEqualToString:@"telegram_chat"] || [_webPage.pageType isEqualToString:@"telegram_megagroup"])
+        else if ([_webPage.pageType isEqualToString:@"eVITA_chat"] || [_webPage.pageType isEqualToString:@"eVITA_megagroup"])
             buttonType = @"viewGroup";
-        else if ([_webPage.pageType isEqualToString:@"telegram_message"])
+        else if ([_webPage.pageType isEqualToString:@"eVITA_message"])
             buttonType = @"viewMessage";
         
         if (buttonType != nil) {

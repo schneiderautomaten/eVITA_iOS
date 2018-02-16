@@ -346,7 +346,7 @@
     _animating = true;
     
     POPBasicAnimation *animation = [POPBasicAnimation animation];
-    POPAnimatableProperty *valueProperty = [POPAnimatableProperty propertyWithName:@"org.telegram.enhanceValue" initializer:^(POPMutableAnimatableProperty *prop)
+    POPAnimatableProperty *valueProperty = [POPAnimatableProperty propertyWithName:@"org.eVITA.enhanceValue" initializer:^(POPMutableAnimatableProperty *prop)
     {
         prop.readBlock = ^(TGPhotoEditorItemController *obj, CGFloat values[])
         {

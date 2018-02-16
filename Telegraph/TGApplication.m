@@ -33,9 +33,9 @@
     return _gameShareDict;
 }
 
-- (NSString *)telegramMeLinkFromText:(NSString *)text startPrivatePayload:(__autoreleasing NSString **)startPrivatePayload startGroupPayload:(__autoreleasing NSString **)startGroupPayload gamePayload:(__autoreleasing NSString **)gamePayload
+- (NSString *)eVITAMeLinkFromText:(NSString *)text startPrivatePayload:(__autoreleasing NSString **)startPrivatePayload startGroupPayload:(__autoreleasing NSString **)startGroupPayload gamePayload:(__autoreleasing NSString **)gamePayload
 {
-    NSString *pattern = @"https?:\\/\\/(telegram\\.me|t\\.me|telegram\\.dog)\\/([a-zA-Z0-9_\\/]+)(\\?.*)?$";
+    NSString *pattern = @"https?:\\/\\/(eVITA\\.me|t\\.me|eVITA\\.dog)\\/([a-zA-Z0-9_\\/]+)(\\?.*)?$";
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:NULL];
     NSTextCheckingResult *match = [regex firstMatchInString:text options:0 range:NSMakeRange(0, [text length])];
     if (match != nil)
@@ -88,7 +88,7 @@
 }
 
 - (NSString *)shareLinkFromText:(NSString *)text {
-    NSString *pattern = @"https?:\\/\\/telegram\\.me\\/share\\/url\\?(.*)$";
+    NSString *pattern = @"https?:\\/\\/eVITA\\.me\\/share\\/url\\?(.*)$";
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:NULL];
     NSTextCheckingResult *match = [regex firstMatchInString:text options:0 range:NSMakeRange(0, [text length])];
     if (match != nil) {
@@ -118,7 +118,7 @@
 }
 
 - (NSString *)socksLinkFromText:(NSString *)text {
-    NSString *pattern = @"(https|http)?:\\/\\/(telegram|t)\\.me\\/socks\\?(.*)$";
+    NSString *pattern = @"(https|http)?:\\/\\/(eVITA|t)\\.me\\/socks\\?(.*)$";
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:NULL];
     NSTextCheckingResult *match = [regex firstMatchInString:text options:0 range:NSMakeRange(0, [text length])];
     if (match != nil) {
@@ -153,9 +153,9 @@
         return true;
     }
     
-    if ([absolutePrefixString hasPrefix:@"http://telegram.me/addstickers/"])
+    if ([absolutePrefixString hasPrefix:@"http://eVITA.me/addstickers/"])
     {
-        NSString *stickerPackHash = [rawAbsoluteString substringFromIndex:@"http://telegram.me/addstickers/".length];
+        NSString *stickerPackHash = [rawAbsoluteString substringFromIndex:@"http://eVITA.me/addstickers/".length];
         NSString *internalUrl = [[NSString alloc] initWithFormat:@"tg://addstickers?set=%@", stickerPackHash];
         [(TGAppDelegate *)self.delegate handleOpenDocument:[NSURL URLWithString:internalUrl] animated:true];
         return true;
@@ -169,9 +169,9 @@
         return true;
     }
     
-    if ([absolutePrefixString hasPrefix:@"https://telegram.me/addstickers/"])
+    if ([absolutePrefixString hasPrefix:@"https://eVITA.me/addstickers/"])
     {
-        NSString *stickerPackHash = [rawAbsoluteString substringFromIndex:@"https://telegram.me/addstickers/".length];
+        NSString *stickerPackHash = [rawAbsoluteString substringFromIndex:@"https://eVITA.me/addstickers/".length];
         NSString *internalUrl = [[NSString alloc] initWithFormat:@"tg://addstickers?set=%@", stickerPackHash];
         [(TGAppDelegate *)self.delegate handleOpenDocument:[NSURL URLWithString:internalUrl] animated:true];
         return true;
@@ -185,15 +185,15 @@
         return true;
     }
     
-    if ([absolutePrefixString hasPrefix:@"https://telegram.me/addstickers/"])
+    if ([absolutePrefixString hasPrefix:@"https://eVITA.me/addstickers/"])
     {
-        NSString *stickerPackHash = [rawAbsoluteString substringFromIndex:@"https://telegram.me/addstickers/".length];
+        NSString *stickerPackHash = [rawAbsoluteString substringFromIndex:@"https://eVITA.me/addstickers/".length];
         NSString *internalUrl = [[NSString alloc] initWithFormat:@"tg://addstickers?set=%@", stickerPackHash];
         [(TGAppDelegate *)self.delegate handleOpenDocument:[NSURL URLWithString:internalUrl] animated:true];
         return true;
     }
     
-    /*NSString *instantViewPattern = @"https?:\\/\\/(t|telegram)\\.me\\/iv\\?(.*?)$";
+    /*NSString *instantViewPattern = @"https?:\\/\\/(t|eVITA)\\.me\\/iv\\?(.*?)$";
     NSRegularExpression *instantViewRegex = [NSRegularExpression regularExpressionWithPattern:instantViewPattern options:NSRegularExpressionCaseInsensitive error:NULL];
     NSArray *instantViewMatches = [instantViewRegex matchesInString:rawAbsoluteString options:0 range:NSMakeRange(0, rawAbsoluteString.length)];
     for (NSTextCheckingResult *match in instantViewMatches) {
@@ -214,9 +214,9 @@
         return true;
     }
     
-    if ([absolutePrefixString hasPrefix:@"https://telegram.me/joinchat/"])
+    if ([absolutePrefixString hasPrefix:@"https://eVITA.me/joinchat/"])
     {
-        NSString *groupHash = [rawAbsoluteString substringFromIndex:@"https://telegram.me/joinchat/".length];
+        NSString *groupHash = [rawAbsoluteString substringFromIndex:@"https://eVITA.me/joinchat/".length];
         NSString *internalUrl = [[NSString alloc] initWithFormat:@"tg://join?invite=%@", groupHash];
         [(TGAppDelegate *)self.delegate handleOpenDocument:[NSURL URLWithString:internalUrl] animated:true keepStack:keepStack];
         return true;
@@ -238,25 +238,25 @@
         return true;
     }
     
-    if ([absolutePrefixString hasPrefix:@"telegram.me/joinchat/"])
+    if ([absolutePrefixString hasPrefix:@"eVITA.me/joinchat/"])
     {
-        NSString *groupHash = [rawAbsoluteString substringFromIndex:@"telegram.me/joinchat/".length];
+        NSString *groupHash = [rawAbsoluteString substringFromIndex:@"eVITA.me/joinchat/".length];
         NSString *internalUrl = [[NSString alloc] initWithFormat:@"tg://join?invite=%@", groupHash];
         [(TGAppDelegate *)self.delegate handleOpenDocument:[NSURL URLWithString:internalUrl] animated:true keepStack:keepStack];
         return true;
     }
     
-    if ([absolutePrefixString hasPrefix:@"http://telegram.me/joinchat/"])
+    if ([absolutePrefixString hasPrefix:@"http://eVITA.me/joinchat/"])
     {
-        NSString *groupHash = [rawAbsoluteString substringFromIndex:@"http://telegram.me/joinchat/".length];
+        NSString *groupHash = [rawAbsoluteString substringFromIndex:@"http://eVITA.me/joinchat/".length];
         NSString *internalUrl = [[NSString alloc] initWithFormat:@"tg://join?invite=%@", groupHash];
         [(TGAppDelegate *)self.delegate handleOpenDocument:[NSURL URLWithString:internalUrl] animated:true keepStack:keepStack];
         return true;
     }
     
-    if ([absolutePrefixString hasPrefix:@"https://telegram.me/confirmphone?"])
+    if ([absolutePrefixString hasPrefix:@"https://eVITA.me/confirmphone?"])
     {
-        NSString *arguments = [rawAbsoluteString substringFromIndex:@"https://telegram.me/confirmphone?".length];
+        NSString *arguments = [rawAbsoluteString substringFromIndex:@"https://eVITA.me/confirmphone?".length];
         NSString *internalUrl = [[NSString alloc] initWithFormat:@"tg://confirmphone?%@", arguments];
         [(TGAppDelegate *)self.delegate handleOpenDocument:[NSURL URLWithString:internalUrl] animated:true];
         return true;
@@ -273,15 +273,15 @@
     NSString *startPrivatePayload = nil;
     NSString *startGroupPayload = nil;
     NSString *gamePayload = nil;
-    NSString *telegramMeLink = [self telegramMeLinkFromText:rawAbsoluteString startPrivatePayload:&startPrivatePayload startGroupPayload:&startGroupPayload gamePayload:&gamePayload];
-    if (telegramMeLink.length != 0 && ![telegramMeLink isEqualToString:@"iv"])
+    NSString *eVITAMeLink = [self eVITAMeLinkFromText:rawAbsoluteString startPrivatePayload:&startPrivatePayload startGroupPayload:&startGroupPayload gamePayload:&gamePayload];
+    if (eVITAMeLink.length != 0 && ![eVITAMeLink isEqualToString:@"iv"])
     {
-        NSString *domainName = telegramMeLink;
+        NSString *domainName = eVITAMeLink;
         NSString *postId = nil;
-        NSRange slashRange = [telegramMeLink rangeOfString:@"/"];
+        NSRange slashRange = [eVITAMeLink rangeOfString:@"/"];
         if (slashRange.location != NSNotFound) {
-            domainName = [telegramMeLink substringToIndex:slashRange.location];
-            postId = [telegramMeLink substringFromIndex:slashRange.location + 1];
+            domainName = [eVITAMeLink substringToIndex:slashRange.location];
+            postId = [eVITAMeLink substringFromIndex:slashRange.location + 1];
         }
         NSMutableString *internalUrl = nil;
         if (postId.length == 0) {

@@ -56,7 +56,7 @@
     int32_t _parallelParts;
     int32_t _defaultPartSize;
     
-    id<TelegramCloudMediaResource> _resource;
+    id<eVITACloudMediaResource> _resource;
     TGNetworkMediaTypeTag _mediaTypeTag;
     
     SQueue *_queue;
@@ -86,7 +86,7 @@
 
 @implementation MultipartFetchManager
 
-- (instancetype)initWithResource:(id<TelegramCloudMediaResource>)resource mediaTypeTag:(TGNetworkMediaTypeTag)mediaTypeTag size:(NSNumber *)size range:(NSRange)range partReady:(void (^)(NSData *))partReady completed:(void (^)())completed failed:(void (^)())failed {
+- (instancetype)initWithResource:(id<eVITACloudMediaResource>)resource mediaTypeTag:(TGNetworkMediaTypeTag)mediaTypeTag size:(NSNumber *)size range:(NSRange)range partReady:(void (^)(NSData *))partReady completed:(void (^)())completed failed:(void (^)())failed {
     self = [super init];
     if (self != nil) {
         _defaultPartSize = 128 * 1024;
@@ -377,7 +377,7 @@
 
 @end
 
-SSignal *multipartFetch(id<TelegramCloudMediaResource> resource, NSNumber *size, NSRange range, TGNetworkMediaTypeTag mediaTypeTag) {
+SSignal *multipartFetch(id<eVITACloudMediaResource> resource, NSNumber *size, NSRange range, TGNetworkMediaTypeTag mediaTypeTag) {
     return [[SSignal alloc] initWithGenerator:^id<SDisposable>(SSubscriber *subscriber) {
         MultipartFetchManager *manager = [[MultipartFetchManager alloc] initWithResource:resource mediaTypeTag:mediaTypeTag size:size range:range partReady:^(NSData *data) {
             [subscriber putNext:[[MediaResourceDataFetchResult alloc] initWithData:data complete:false]];

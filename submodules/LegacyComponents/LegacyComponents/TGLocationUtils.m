@@ -264,11 +264,11 @@ const CGFloat TGGoogleMapsRadius = TGGoogleMapsOffset / (CGFloat)M_PI;
     
     if (withDirections)
     {
-        url = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"comgooglemaps-x-callback://?daddr=%@&directionsmode=driving&x-success=telegram://?resume=true&&x-source=Telegram", coordinatePair]];
+        url = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"comgooglemaps-x-callback://?daddr=%@&directionsmode=driving&x-success=eVITA://?resume=true&&x-source=eVITA", coordinatePair]];
     }
     else
     {
-        url = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"comgooglemaps-x-callback://?center=%@&q=%@&x-success=telegram://?resume=true&&x-source=Telegram", coordinatePair, coordinatePair]];
+        url = [NSURL URLWithString:[[NSString alloc] initWithFormat:@"comgooglemaps-x-callback://?center=%@&q=%@&x-success=eVITA://?resume=true&&x-source=eVITA", coordinatePair, coordinatePair]];
     }
 
     [[LegacyComponentsGlobals provider] openURL:url];

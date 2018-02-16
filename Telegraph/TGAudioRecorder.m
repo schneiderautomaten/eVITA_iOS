@@ -75,7 +75,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
     {
-        queue = [[ASQueue alloc] initWithName:"org.telegram.audioRecorderQueue"];
+        queue = [[ASQueue alloc] initWithName:"org.eVITA.audioRecorderQueue"];
     });
     return queue;
 }

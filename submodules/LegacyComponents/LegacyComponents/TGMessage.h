@@ -1,5 +1,5 @@
 /*
- * This is the source code of Telegram for iOS v. 1.1
+ * This is the source code of eVITA for iOS v. 1.1
  * It is licensed under GNU GPL v. 2 or later.
  * You should have received a copy of the license in this archive (see LICENSE).
  *
@@ -287,7 +287,7 @@ static inline TGMessageSortKey TGTaggedMessageSortKeyExtract(NSData *data, int32
 
 @interface NSTextCheckingResult (TGMessage)
 
-- (bool)isTelegramHiddenLink;
+- (bool)iseVITAHiddenLink;
 
 @end
 
