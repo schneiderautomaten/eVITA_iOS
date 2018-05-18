@@ -527,6 +527,7 @@ typedef enum {
 - (instancetype)init
 {
     self = [super init];
+    printf("CHAT!!!");
     if (self != nil)
     {
         _actionHandle = [[ASHandle alloc] initWithDelegate:self releaseOnMainThread:true];
@@ -983,7 +984,8 @@ typedef enum {
     _view.backgroundColor = [UIColor whiteColor];
     
     _backgroundView = [[UIImageView alloc] initWithFrame:_view.bounds];
-    UIImage *wallpaperImage = [[TGWallpaperManager instance] currentWallpaperImage];
+//    UIImage *wallpaperImage = [[TGWallpaperManager instance] currentWallpaperImage];
+    UIImage *wallpaperImage = [UIImage imageNamed:@"main_background.png"];
     _backgroundView.image = wallpaperImage;
     _backgroundView.clipsToBounds = true;
     _backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

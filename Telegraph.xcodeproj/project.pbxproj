@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		004BDB382036C98300690822 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 004BDB2E2036C98200690822 /* config.h */; };
+		0095AA5820A2F25300C5647C /* main_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 0095AA4E20A2F25200C5647C /* main_background.png */; };
 		09034EB71EE08B5F006997DB /* ModernContactListBroadcastIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09034EB41EE08B5E006997DB /* ModernContactListBroadcastIcon@3x.png */; };
 		09034EB81EE08B5F006997DB /* ModernContactListCreateGroupIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09034EB51EE08B5F006997DB /* ModernContactListCreateGroupIcon@3x.png */; };
 		09034EB91EE08B5F006997DB /* ModernContactListCreateSecretChatIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09034EB61EE08B5F006997DB /* ModernContactListCreateSecretChatIcon@3x.png */; };
@@ -5023,6 +5024,7 @@
 
 /* Begin PBXFileReference section */
 		004BDB2E2036C98200690822 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		0095AA4E20A2F25200C5647C /* main_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_background.png; sourceTree = "<group>"; };
 		09034EB41EE08B5E006997DB /* ModernContactListBroadcastIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ModernContactListBroadcastIcon@3x.png"; path = "Resources/ModernContactListBroadcastIcon@3x.png"; sourceTree = "<group>"; };
 		09034EB51EE08B5F006997DB /* ModernContactListCreateGroupIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ModernContactListCreateGroupIcon@3x.png"; path = "Resources/ModernContactListCreateGroupIcon@3x.png"; sourceTree = "<group>"; };
 		09034EB61EE08B5F006997DB /* ModernContactListCreateSecretChatIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ModernContactListCreateSecretChatIcon@3x.png"; path = "Resources/ModernContactListCreateSecretChatIcon@3x.png"; sourceTree = "<group>"; };
@@ -19911,6 +19913,7 @@
 		D0880632156EAEA300311537 /* AppResources */ = {
 			isa = PBXGroup;
 			children = (
+				0095AA4E20A2F25200C5647C /* main_background.png */,
 				09FCB6931FB2FAE60007D2CA /* PasscodePlaceholderIcon@2x.png */,
 				09FCB6941FB2FAE70007D2CA /* PasscodePlaceholderIcon@3x.png */,
 				09FCB6901FB2E98B0007D2CA /* PasswordPlaceholderIcon@2x.png */,
@@ -24510,6 +24513,9 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -24845,6 +24851,7 @@
 				096CED9B1F756AAB005C5C70 /* LocationMessagePinSmallBackground@2x.png in Resources */,
 				68D68B091C9C3A7E0016F742 /* EmbedExitFullScreenButton@2x.png in Resources */,
 				68EE347B1C873E5D002F5419 /* ShareExternalIcon@2x.png in Resources */,
+				0095AA5820A2F25300C5647C /* main_background.png in Resources */,
 				D069B1BB1B3D94110034C967 /* MusicPlayerMinimizedClose@3x.png in Resources */,
 				09FCB6921FB2E98C0007D2CA /* PasswordPlaceholderIcon@2x.png in Resources */,
 				935B6E261628540C00A2E265 /* SearchInputField@2x.png in Resources */,
@@ -28744,7 +28751,7 @@
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = Telegraph/Telegram.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: David Neff (SGA99XHTJ6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEAD_CODE_STRIPPING = YES;
@@ -28810,9 +28817,9 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = de.schneider.evita;
 				PRODUCT_NAME = eVITA;
-				PROVISIONING_PROFILE = "92cebc39-8790-438e-9bae-3e96cfa955f1";
+				PROVISIONING_PROFILE = "048b30b7-681c-43e1-8d2a-59153136c877";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "eVita In-House";
+				PROVISIONING_PROFILE_SPECIFIER = "eVITA In-House";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -28837,7 +28844,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_ENTITLEMENTS = Share/Share.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Schneider Automaten GmbH & Co KG";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = C5X584DG99;
@@ -28868,7 +28875,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.schneider.evita.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9f12114f-6af1-483b-a7d2-4e50175cda1d";
+				PROVISIONING_PROFILE = "a3d1892c-de37-4487-aa16-d5b40aa419f7";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				PROVISIONING_PROFILE_SPECIFIER = "eVITA share";
 				SKIP_INSTALL = YES;
@@ -29237,7 +29244,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_ENTITLEMENTS = Share/Share.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Schneider Automaten GmbH & Co KG";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = C5X584DG99;
@@ -29268,7 +29275,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.schneider.evita.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9f12114f-6af1-483b-a7d2-4e50175cda1d";
+				PROVISIONING_PROFILE = "a3d1892c-de37-4487-aa16-d5b40aa419f7";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				PROVISIONING_PROFILE_SPECIFIER = "eVITA share";
 				SKIP_INSTALL = YES;
@@ -29290,7 +29297,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_ENTITLEMENTS = Share/Share.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Schneider Automaten GmbH & Co KG";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = C5X584DG99;
@@ -29318,7 +29325,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.schneider.evita.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9f12114f-6af1-483b-a7d2-4e50175cda1d";
+				PROVISIONING_PROFILE = "a3d1892c-de37-4487-aa16-d5b40aa419f7";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				PROVISIONING_PROFILE_SPECIFIER = "eVITA share";
 				SKIP_INSTALL = NO;
@@ -29383,7 +29390,7 @@
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = Telegraph/Enterprise.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: TELEGRAM MESSENGER LLP";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
@@ -29448,9 +29455,9 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = de.schneider.evita;
 				PRODUCT_NAME = eVITA;
-				PROVISIONING_PROFILE = "92cebc39-8790-438e-9bae-3e96cfa955f1";
+				PROVISIONING_PROFILE = "048b30b7-681c-43e1-8d2a-59153136c877";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "eVita In-House";
+				PROVISIONING_PROFILE_SPECIFIER = "eVITA In-House";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -29475,7 +29482,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_ENTITLEMENTS = Share/Share.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Schneider Automaten GmbH & Co KG";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = C5X584DG99;
@@ -29503,7 +29510,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.schneider.evita.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9f12114f-6af1-483b-a7d2-4e50175cda1d";
+				PROVISIONING_PROFILE = "a3d1892c-de37-4487-aa16-d5b40aa419f7";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				PROVISIONING_PROFILE_SPECIFIER = "eVITA share";
 				SKIP_INSTALL = NO;
@@ -29788,7 +29795,7 @@
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = Telegraph/Enterprise.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ilya Laktyushin (7K5L5BWX3Z)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEAD_CODE_STRIPPING = YES;
@@ -29854,9 +29861,9 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = de.schneider.evita;
 				PRODUCT_NAME = eVITA;
-				PROVISIONING_PROFILE = "92cebc39-8790-438e-9bae-3e96cfa955f1";
+				PROVISIONING_PROFILE = "048b30b7-681c-43e1-8d2a-59153136c877";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "eVita In-House";
+				PROVISIONING_PROFILE_SPECIFIER = "eVITA In-House";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -29881,7 +29888,7 @@
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = Telegraph/Telegram.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Digital Fortress LLC (C67CF9S4VU)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
@@ -29945,9 +29952,9 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = de.schneider.evita;
 				PRODUCT_NAME = eVITA;
-				PROVISIONING_PROFILE = "92cebc39-8790-438e-9bae-3e96cfa955f1";
+				PROVISIONING_PROFILE = "048b30b7-681c-43e1-8d2a-59153136c877";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "eVita In-House";
+				PROVISIONING_PROFILE_SPECIFIER = "eVITA In-House";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
