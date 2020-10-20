@@ -1,8 +1,8 @@
 [submodule "thirdparty/ActionSheetPicker"]
 	path = thirdparty/ActionSheetPicker
 	url = https://github.com/skywinder/ActionSheetPicker-3.0.git
-[submodule "thirdparty/SSignalKit"]
-	path = thirdparty/SSignalKit
+[submodule "submodules/SSignalKit"]
+	path = submodules/SSignalKit
 url=https://github.com/peter-iakovlev/Signals.git
 [submodule "submodules/MtProtoKit"]
 	path = submodules/MtProtoKit

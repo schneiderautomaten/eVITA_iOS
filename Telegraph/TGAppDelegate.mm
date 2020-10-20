@@ -2760,7 +2760,7 @@ static unsigned int overrideIndexAbove(__unused id self, __unused SEL _cmd)
             
             if (ip.length != 0)
             {
-                [[TGTelegramNetworking instance] mergeDatacenterAddress:datacenterId address:[[MTDatacenterAddress alloc] initWithIp:ip port:(uint16_t)(port == 0 ? 443 : port) preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false]];
+                [[TGTelegramNetworking instance] mergeDatacenterAddress:datacenterId address:[[MTDatacenterAddress alloc] initWithIp:ip port:(uint16_t)(port == 0 ? 443 : port) preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false secret:nil]];
             }
         }
     }
@@ -3325,7 +3325,7 @@ static unsigned int overrideIndexAbove(__unused id self, __unused SEL _cmd)
                     
                     [TGAlertView presentAlertWithTitle:nil message:text cancelButtonTitle:TGLocalized(@"Common.Cancel") okButtonTitle:TGLocalized(@"Settings.ApplyProxyAlertEnable") completionBlock:^(bool okButtonPressed) {
                         if (okButtonPressed) {
-                            MTSocksProxySettings *updatedSettings = [[MTSocksProxySettings alloc] initWithIp:dict[@"server"] port:(uint16_t)[dict[@"port"] intValue] username:username password:password];
+                            MTSocksProxySettings *updatedSettings = [[MTSocksProxySettings alloc] initWithIp:dict[@"server"] port:(uint16_t)[dict[@"port"] intValue] username:username password:password secret:nil];
                             
                             NSData *data = nil;
                             if (updatedSettings != nil) {

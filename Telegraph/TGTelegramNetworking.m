@@ -189,7 +189,7 @@ static TGTelegramNetworking *singleton = nil;
                 } else {
                     ip = text;
                 }
-                datacenterAddressOverrides[@(i + 1)] = [[MTDatacenterAddress alloc] initWithIp:ip port:port preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false];
+                datacenterAddressOverrides[@(i + 1)] = [[MTDatacenterAddress alloc] initWithIp:ip port:port preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false secret:nil];
             }
         }
         apiEnvironment.datacenterAddressOverrides = datacenterAddressOverrides;
@@ -209,11 +209,11 @@ static TGTelegramNetworking *singleton = nil;
         if (socksProxyData != nil) {
             NSDictionary *socksProxyDict = [NSKeyedUnarchiver unarchiveObjectWithData:socksProxyData];
             if (socksProxyDict[@"ip"] != nil && socksProxyDict[@"port"] != nil && ![socksProxyDict[@"inactive"] boolValue]) {
-                apiEnvironment = [apiEnvironment withUpdatedSocksProxySettings:[[MTSocksProxySettings alloc] initWithIp:socksProxyDict[@"ip"] port:(uint16_t)[socksProxyDict[@"port"] intValue] username:socksProxyDict[@"username"] password:socksProxyDict[@"password"]]];
+                apiEnvironment = [apiEnvironment withUpdatedSocksProxySettings:[[MTSocksProxySettings alloc] initWithIp:socksProxyDict[@"ip"] port:(uint16_t)[socksProxyDict[@"port"] intValue] username:socksProxyDict[@"username"] password:socksProxyDict[@"password"] secret:nil]];
             }
         }
         
-        _context = [[MTContext alloc] initWithSerialization:[[TGTLSerialization alloc] init] apiEnvironment:apiEnvironment];
+        _context = [[MTContext alloc] initWithSerialization:[[TGTLSerialization alloc] init] apiEnvironment:apiEnvironment isTestingEnvironment: false useTempAuthKeys:false];
         [_context addChangeListener:self];
         
         _workersByDatacenterId = [[NSMutableDictionary alloc] init];
@@ -222,10 +222,10 @@ static TGTelegramNetworking *singleton = nil;
         if (_isTestingEnvironment)
         {
             [_context updateAddressSetForDatacenterWithId:1 addressSet:[[MTDatacenterAddressSet alloc] initWithAddressList:@[
-                [[MTDatacenterAddress alloc] initWithIp:@"149.154.175.10" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false]
+                [[MTDatacenterAddress alloc] initWithIp:@"149.154.175.10" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false secret:nil]
             ]] forceUpdateSchemes:true];
             [_context updateAddressSetForDatacenterWithId:2 addressSet:[[MTDatacenterAddressSet alloc] initWithAddressList:@[
-                [[MTDatacenterAddress alloc] initWithIp:@"149.154.167.40" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false]
+                [[MTDatacenterAddress alloc] initWithIp:@"149.154.167.40" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false secret:nil]
             ]] forceUpdateSchemes:true];
         }
         else
@@ -233,28 +233,28 @@ static TGTelegramNetworking *singleton = nil;
             [_context performBatchUpdates:^
             {
                 [_context setSeedAddressSetForDatacenterWithId:1 seedAddressSet:[[MTDatacenterAddressSet alloc] initWithAddressList:@[
-                    [[MTDatacenterAddress alloc] initWithIp:@"149.154.175.50" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false],
-                    [[MTDatacenterAddress alloc] initWithIp:@"2001:b28:f23d:f001::a" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false]
+                    [[MTDatacenterAddress alloc] initWithIp:@"149.154.175.50" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false secret:nil],
+                    [[MTDatacenterAddress alloc] initWithIp:@"2001:b28:f23d:f001::a" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false secret:nil]
                 ]]];
                 
                 [_context setSeedAddressSetForDatacenterWithId:2 seedAddressSet:[[MTDatacenterAddressSet alloc] initWithAddressList:@[
-                    [[MTDatacenterAddress alloc] initWithIp:@"149.154.167.51" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false],
-                    [[MTDatacenterAddress alloc] initWithIp:@"2001:67c:4e8:f002::a" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false]
+                    [[MTDatacenterAddress alloc] initWithIp:@"149.154.167.51" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false secret:nil],
+                    [[MTDatacenterAddress alloc] initWithIp:@"2001:67c:4e8:f002::a" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false secret:nil]
                 ]]];
                 
                 [_context setSeedAddressSetForDatacenterWithId:3 seedAddressSet:[[MTDatacenterAddressSet alloc] initWithAddressList:@[
-                    [[MTDatacenterAddress alloc] initWithIp:@"149.154.175.100" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false],
-                    [[MTDatacenterAddress alloc] initWithIp:@"2001:b28:f23d:f003::a" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false]
+                    [[MTDatacenterAddress alloc] initWithIp:@"149.154.175.100" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false secret:nil],
+                    [[MTDatacenterAddress alloc] initWithIp:@"2001:b28:f23d:f003::a" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false secret:nil]
                 ]]];
 
                 [_context setSeedAddressSetForDatacenterWithId:4 seedAddressSet:[[MTDatacenterAddressSet alloc] initWithAddressList:@[
-                    [[MTDatacenterAddress alloc] initWithIp:@"149.154.167.91" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false],
-                    [[MTDatacenterAddress alloc] initWithIp:@"2001:67c:4e8:f004::a" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false]
+                    [[MTDatacenterAddress alloc] initWithIp:@"149.154.167.91" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false secret:nil],
+                    [[MTDatacenterAddress alloc] initWithIp:@"2001:67c:4e8:f004::a" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false secret:nil]
                 ]]];
 
                 [_context setSeedAddressSetForDatacenterWithId:5 seedAddressSet:[[MTDatacenterAddressSet alloc] initWithAddressList:@[
-                    [[MTDatacenterAddress alloc] initWithIp:@"149.154.171.5" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false],
-                    [[MTDatacenterAddress alloc] initWithIp:@"2001:b28:f23f:f005::a" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false]
+                    [[MTDatacenterAddress alloc] initWithIp:@"149.154.171.5" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false secret:nil],
+                    [[MTDatacenterAddress alloc] initWithIp:@"2001:b28:f23f:f005::a" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false secret:nil]
                 ]]];
             }];
         }
@@ -264,10 +264,10 @@ static TGTelegramNetworking *singleton = nil;
         if (_isTestingEnvironment)
         {
             [_context updateAddressSetForDatacenterWithId:1 addressSet:[[MTDatacenterAddressSet alloc] initWithAddressList:@[
-                [[MTDatacenterAddress alloc] initWithIp:@"149.154.175.10" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false]
+                [[MTDatacenterAddress alloc] initWithIp:@"149.154.175.10" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false secret:nil]
             ]] forceUpdateSchemes:true];
             [_context updateAddressSetForDatacenterWithId:2 addressSet:[[MTDatacenterAddressSet alloc] initWithAddressList:@[
-                [[MTDatacenterAddress alloc] initWithIp:@"149.154.167.40" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false]
+                [[MTDatacenterAddress alloc] initWithIp:@"149.154.167.40" port:443 preferForMedia:false restrictToTcp:false cdn:false preferForProxy:false secret:nil]
             ]] forceUpdateSchemes:true];
         }
         
@@ -1228,7 +1228,7 @@ static TGTelegramNetworking *singleton = nil;
     [ActionStageInstance() dispatchOnStageQueue:^
     {
         _isConnected = state.isConnected;
-        _isUsingProxy = state.isUsingProxy;
+        _isUsingProxy = state.isProxy;
         [self dispatchNetworkState];
     }];
 }
